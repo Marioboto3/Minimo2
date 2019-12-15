@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>New User</ion-title>
+    <ion-back-button slot="end"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card>
+  <form [formGroup]="addUser" (ngSubmit)="create()">
+  <ion-card-title>User</ion-card-title>
+  <ion-card-content>
+    <ion-toolbar color="primary">
+    <ion-input  name="name" type="name" formControlName="name" placeholder="Name..." required></ion-input>
+    </ion-toolbar>
+    <ion-toolbar color="secondary">
+      <ion-input  name="address" type="address" formControlName="address" placeholder="Address..." required></ion-input>
+    </ion-toolbar>
+    <ion-toolbar>
+    <ion-button slot="start" (click)="addPhone()">Add phone</ion-button>
+    <ion-button slot="end" (click)="addStudies()">Add studies</ion-button>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-button (click)="create()">Add user</ion-button></ion-toolbar>
+  </ion-card-content>
+  </form>
+</ion-card>
+</ion-content>

@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>add-user-subject</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card color="primary">
+  <ion-card-title>Users</ion-card-title>
+  <ion-card-content *ngFor="let student of stuTest">
+    <ion-toolbar>
+      <ion-button (click)="addUser(student._id)" expand="block">{{student.name}}</ion-button>
+    </ion-toolbar>
+  </ion-card-content>
+</ion-card>
+</ion-content>

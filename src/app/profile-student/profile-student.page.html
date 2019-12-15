@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ProfileStudent</ion-title>
+    <ion-back-button slot="end"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="student" color="secondary" class="vertical-margin" >
+    <ion-card-title >{{student.name}}</ion-card-title>
+      <ion-toolbar>address:{{student.address}}</ion-toolbar>
+    <div *ngFor="let phone of student.phones">
+      <ion-toolbar>phones:{{phone.number}}</ion-toolbar>
+    </div>
+    <div *ngFor="let study of student.studies">
+    <ion-toolbar>studies:{{study.studies}}</ion-toolbar>
+    </div>
+  </ion-card>
+</ion-content>

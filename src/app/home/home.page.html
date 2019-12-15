@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Minimo 2
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card color="secondary" class="vertical-margin" *ngFor="let subject of subjects">
+    <ion-toolbar color="secondary" (click)="changePage(subject._id)"> {{subject.name}}</ion-toolbar>
+  </ion-card>
+</ion-content>
