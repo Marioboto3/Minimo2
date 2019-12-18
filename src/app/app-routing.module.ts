@@ -20,6 +20,22 @@ const routes: Routes = [
     path: 'add-user-subject/:id',
     loadChildren: () => import('./add-user-subject/add-user-subject.module').then( m => m.AddUserSubjectPageModule)
   },
+  {
+    path: 'view-subjects',
+    loadChildren: () => import('./view-subjects/view-subjects.module').then( m => m.ViewSubjectsPageModule)
+  },
+  {
+    path: 'view-students',
+    loadChildren: () => import('./view-students/view-students.module').then( m => m.ViewStudentsPageModule)
+  },
+  {
+    path: 'add-subject',
+    loadChildren: () => import('./add-subject/add-subject.module').then( m => m.AddSubjectPageModule)
+  },
+  {
+    path: 'add-student-to-new-subject',
+    loadChildren: () => import('./add-student-to-new-subject/add-student-to-new-subject.module').then( m => m.AddStudentToNewSubjectPageModule)
+  },
 ];
 
 @NgModule({

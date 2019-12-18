@@ -57,7 +57,7 @@ export class AddUserPage implements OnInit {
         {
           text: 'Add',
           handler: data => {
-            this.student.phones.push(data.number, data.description);
+            this.student.phones.push({number: data.number, description: data.description});
             console.log(this.student.phones);
           }
         }
@@ -86,7 +86,7 @@ export class AddUserPage implements OnInit {
         {
           text: 'Add',
           handler: data => {
-            this.student.studies.push(data.studies);
+            this.student.studies.push({studies: data.studies});
           }
         }
       ]

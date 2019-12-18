@@ -1,16 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>add-user-subject</ion-title>
+    <ion-title>Add user to subject</ion-title>
+    <ion-back-button slot="end"></ion-back-button>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<ion-card color="primary">
-  <ion-card-title>Users</ion-card-title>
+<ion-card color="light">
+  <ion-card-header><ion-card-title>Users</ion-card-title></ion-card-header>
   <ion-card-content *ngFor="let student of stuTest">
-    <ion-toolbar>
-      <ion-button (click)="addUser(student._id)" expand="block">{{student.name}}</ion-button>
-    </ion-toolbar>
+    <ion-card color="secondary" class="vertical-margin" *ngFor="let student of students">
+      <ion-toolbar color="secondary">
+        {{student.name}}
+        <ion-icon slot="end" name="add-circle-outline" (click)="addUser(student._id)"></ion-icon>
+      </ion-toolbar>
+      <ion-toolbar color="medium"> Address: {{student.address}}</ion-toolbar>
+    </ion-card>
   </ion-card-content>
 </ion-card>
 </ion-content>

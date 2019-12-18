@@ -28,7 +28,7 @@ export class AddUserSubjectPage implements OnInit {
     });
   }
   async addUser(id: string) {
-    await this.addUserSubjectService.addStudent(id, this.subject._id).subscribe(res =>{
+    await this.addUserSubjectService.addStudent(id, this.subject._id).subscribe(res => {
       console.log(res);
     });
   }

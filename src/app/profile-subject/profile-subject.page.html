@@ -2,17 +2,23 @@
   <ion-toolbar>
     <ion-title>ProfileSubject</ion-title>
     <ion-back-button slot="end"></ion-back-button>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card  *ngIf="subject" color="secondary" class="vertical-margin" >
-    <ion-card-title>{{subject.name}}</ion-card-title>
-    <div *ngFor="let student of studentsTest">
-      <ion-toolbar>
-        <ion-button expand="block" (click)="changePage(student._id)">{{student.name}}</ion-button>
-      </ion-toolbar>
-    </div>
-    <ion-button expand="block" (click)="changePageAdd(subject._id)">Añadir un usuario</ion-button>
+  <ion-card  *ngIf="subject" color="light" class="vertical-margin" >
+    <ion-card-header><ion-card-title>{{subject.name}}</ion-card-title></ion-card-header>
+     <ion-card-content>
+       <ion-card color="secondary" class="vertical-margin" *ngFor="let student of studentsTest">
+        <ion-toolbar color="medium">
+          {{student.name}}
+          <ion-icon slot="end" name="add-circle-outline" (click)="changePage(student._id)"></ion-icon>
+        </ion-toolbar>
+      </ion-card>
+     </ion-card-content>
+    <ion-button expand="block" color="dark" (click)="changePageAdd(subject._id)">Añadir un usuario</ion-button>
   </ion-card>
 </ion-content>
