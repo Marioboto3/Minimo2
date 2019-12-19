@@ -24,6 +24,7 @@ export class AddUserSubjectPage implements OnInit {
       const response: any = res;
       console.log('res:', res);
       this.stuTest = response.st;
+      console.log('stuTest: ', this.stuTest);
       this.subject = response.subject;
     });
   }

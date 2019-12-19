@@ -12,13 +12,10 @@
 <ion-card color="light">
   <ion-card-header><ion-card-title>Users</ion-card-title></ion-card-header>
   <ion-card-content *ngFor="let student of stuTest">
-    <ion-card color="secondary" class="vertical-margin" *ngFor="let student of students">
       <ion-toolbar color="secondary">
         {{student.name}}
         <ion-icon slot="end" name="add-circle-outline" (click)="addUser(student._id)"></ion-icon>
       </ion-toolbar>
-      <ion-toolbar color="medium"> Address: {{student.address}}</ion-toolbar>
-    </ion-card>
   </ion-card-content>
 </ion-card>
 </ion-content>
