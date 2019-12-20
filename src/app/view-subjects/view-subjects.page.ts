@@ -18,7 +18,9 @@ export class ViewSubjectsPage implements OnInit {
   async ngOnInit() {
     await this.getSubjects();
   }
-
+  async ionViewDidEnter() {
+    await this.getSubjects();
+  }
   async getSubjects() {
     await this.viewSubjectService.getSubjects().subscribe(res => {
       console.log(res);

@@ -17,8 +17,10 @@ export class AddStudentToNewSubjectPage implements OnInit {
   async ngOnInit() {
       await this.getStudents();
   }
-
-  async getStudents() {
+  async ionViewDidEnter() {
+    await this.getStudents();
+  }
+    async getStudents() {
     await this.service.getStudents().subscribe(res => {
       console.log(res);
       this.students = res as Student[];

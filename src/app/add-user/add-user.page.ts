@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {AddUserService} from './add-user.service';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {AlertController} from '@ionic/angular';
+import {AlertController, ToastController} from '@ionic/angular';
 import {Student} from '../Models/Student';
 import {Router} from '@angular/router';
+import {Subject} from '../Models/Subject';
 
 @Component({
   selector: 'app-add-user',
@@ -17,7 +18,8 @@ export class AddUserPage implements OnInit {
   constructor(private addUserService: AddUserService,
               private formBuilder: FormBuilder,
               public alertCtrl: AlertController,
-              private router: Router) {
+              private router: Router,
+              private toastCtrl: ToastController) {
     this.addUser = this.formBuilder.group({
       address: new FormControl(),
       name: new FormControl()});
@@ -25,13 +27,15 @@ export class AddUserPage implements OnInit {
   ngOnInit() {
     this.student = new Student();
   }
+  ionViewDidEnter() {
+    this.student = new Student();
+  }
   async create() {
     this.student.name = this.addUser.controls.name.value;
     this.student.address = this.addUser.controls.address.value;
-    this.addUserService.addStudent(this.student).subscribe(res =>
-    console.log(res));
-    // await this.router.navigateByUrl('/home');
-
+    await this.addUserService.addStudent(this.student).subscribe(res => {
+          console.log(res);
+          this.router.navigateByUrl('/view-students'); });
   }
   addPhone() {
     this.alertCtrl.create({
@@ -59,6 +63,7 @@ export class AddUserPage implements OnInit {
           handler: data => {
             this.student.phones.push({number: data.number, description: data.description});
             console.log(this.student.phones);
+            this.launchToast('Phone added successfully');
           }
         }
       ]
@@ -87,11 +92,19 @@ export class AddUserPage implements OnInit {
           text: 'Add',
           handler: data => {
             this.student.studies.push({studies: data.studies});
+            this.launchToast('Studies added successfully');
           }
         }
       ]
     }).then(alert => {
       alert.present();
     });
+  }
+  async launchToast(message) {
+    let toast = await this.toastCtrl.create({
+      message: message,
+      duration: 3000
+    });
+    await toast.present();
   }
 }

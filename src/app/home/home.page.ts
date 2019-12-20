@@ -22,6 +22,12 @@ export class HomePage implements OnInit {
       this.subjects = res as Subject [];
     });
   }
+  async ionViewDidEnter() {
+    console.log('View');
+    this.homeService.getSubjects().subscribe(res => {
+      console.log(res);
+      this.subjects = res as Subject [];
+    }); }
   async changePage(_id: string) {
     await this.router.navigateByUrl('/profile-subject/' + `${_id}`);
   }

@@ -23,11 +23,16 @@ export class AddSubjectPage implements OnInit {
   ngOnInit() {
     this.subject = new Subject();
   }
+  ionViewDidEnter() {
+    this.subject = new Subject();
+  }
   async create() {
     this.subject.name = this.addSubject.controls.name.value;
     console.log('name: ', this.subject.name);
     this.addSubjectService.addSubject(this.subject).subscribe(res => {
         console.log(res);
+        this.router.navigateByUrl('/home');
+
     });
   }
   async addStudent() {

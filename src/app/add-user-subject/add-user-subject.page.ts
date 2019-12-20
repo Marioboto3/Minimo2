@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AddUserSubjectService} from './add-user-subject.service';
 import {Student} from '../Models/Student';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Subject} from '../Models/Subject';
 
 @Component({
@@ -16,7 +16,8 @@ export class AddUserSubjectPage implements OnInit {
   stuTest: Student[];
   id: string;
   constructor(private addUserSubjectService: AddUserSubjectService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   async ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -28,9 +29,19 @@ export class AddUserSubjectPage implements OnInit {
       this.subject = response.subject;
     });
   }
+  async ionViewDidEnter() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    await this.addUserSubjectService.getSubject(this.id).subscribe(res => {
+      const response: any = res;
+      console.log('res:', res);
+      this.stuTest = response.st;
+      console.log('stuTest: ', this.stuTest);
+      this.subject = response.subject;
+    });  }
   async addUser(id: string) {
     await this.addUserSubjectService.addStudent(id, this.subject._id).subscribe(res => {
       console.log(res);
+      this.router.navigateByUrl('/home');
     });
   }
 }

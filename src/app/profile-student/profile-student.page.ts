@@ -3,6 +3,7 @@ import {ProfileSubjectService} from '../profile-subject/profile-subject.service'
 import {ActivatedRoute} from '@angular/router';
 import {ProfileStudentService} from './profile-student.service';
 import {Student} from '../Models/Student';
+import {Subject} from '../Models/Subject';
 
 @Component({
   selector: 'app-profile-student',
@@ -23,5 +24,11 @@ export class ProfileStudentPage implements OnInit {
       this.student = res as Student;
     });
   }
-
+  async ionViewDidEnter() {
+    this._id = this.route.snapshot.paramMap.get('id');
+    console.log('id: ', this._id);
+    await this.profileStudentService.getStudent(this._id).subscribe(res => {
+      console.log(res);
+      this.student = res as Student;
+    }); }
 }

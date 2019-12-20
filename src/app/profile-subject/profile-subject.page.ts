@@ -29,6 +29,14 @@ export class ProfileSubjectPage implements OnInit {
       this.studentsTest = response.students.students;
     });
   }
+  async ionViewDidEnter() {
+    this._id = this.route.snapshot.paramMap.get('id');
+    await this.profileSubjectService.getSubject(this._id).subscribe(res => {
+      console.log(res);
+      const response: any = res;
+      this.subject = response.subject;
+      this.studentsTest = response.students.students;
+    }); }
   async changePage(id: string) {
       await this.router.navigateByUrl('/profile-student/' + `${id}`);
   }

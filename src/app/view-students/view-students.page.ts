@@ -18,7 +18,9 @@ export class ViewStudentsPage implements OnInit {
   async ngOnInit() {
     await this.getStudents();
   }
-
+  async ionViewDidEnter() {
+    await this.getStudents();
+   }
   async getStudents() {
     await this.viewStudentsService.getStudents().subscribe(res => {
         console.log(res);
