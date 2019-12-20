@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{this.name}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-back-button slot="end"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card color="light">
+    <ion-card-content>
+      <ion-card color="secondary" class="vertical-margin" *ngFor="let student of students">
+        <ion-toolbar color="secondary">
+          {{student.name}}
+        </ion-toolbar>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

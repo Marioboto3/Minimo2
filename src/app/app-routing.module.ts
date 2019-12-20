@@ -36,6 +36,14 @@ const routes: Routes = [
     path: 'add-student-to-new-subject',
     loadChildren: () => import('./add-student-to-new-subject/add-student-to-new-subject.module').then( m => m.AddStudentToNewSubjectPageModule)
   },
+  {
+    path: 'see-studies',
+    loadChildren: () => import('./see-studies/see-studies.module').then( m => m.SeeStudiesPageModule)
+  },
+  {
+    path: 'list-studies/:name',
+    loadChildren: () => import('./list-studies/list-studies.module').then( m => m.ListStudiesPageModule)
+  },
 ];
 
 @NgModule({

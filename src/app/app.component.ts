@@ -35,6 +35,11 @@ export class AppComponent {
       title: 'Students',
       url: '/view-students',
       icon: 'chatboxes'
+    },
+    {
+      title: 'Studies',
+      url: '/see-studies',
+      icon: 'cube'
     }
   ];
   constructor(
